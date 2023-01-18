@@ -42,6 +42,24 @@ public:
         myHeadNode->next=head;
         head=myHeadNode;
     };
+    void InsertAfterSpecificValue(int value, int data)
+    {
+       Node* a=head;
+       while(a!=NULL)
+       {
+           if(a->data == value)
+            break;
+           a=a->next;
+       };
+       if(a==NULL)
+       {
+           cout << value << " does not exist in the Linked List!" << "\n";
+           return;
+       };
+       Node* newNode = CreateNewNode(data);
+       newNode->next=a->next;
+       a->next= newNode;
+    };
     void Traverse()
     {
         Node* traverseNode = head;
@@ -78,5 +96,10 @@ int main()
     l.Traverse();
     cout << "\n";
     l.ReverseTraverse();
+    cout << "\n";
+    l.InsertAfterSpecificValue(30, 117);
+    l.ReverseTraverse();
+    cout << "\n";
+    l.Traverse();
     return 0;
 }
